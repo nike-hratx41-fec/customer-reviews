@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get("/")
+    Axios.get("/reviews")
       .then(reviewData => {
         this.setState({
           currentReviews: reviewData.data[0].reviews,

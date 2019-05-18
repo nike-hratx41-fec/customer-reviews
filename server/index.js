@@ -8,7 +8,7 @@ let port = 3000;
 app.use(bodyparser.json());
 app.use(express.static(__dirname + "/../client/dist"));
 
-app.get("/", (req, res) => {
+app.get("/reviews", (req, res) => {
   mongo.findAll({}, (err, reviews) => {
     if (err) {
       console.log("error inside findall: ", err);
