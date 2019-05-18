@@ -3,6 +3,7 @@ const reviews = require("../../shoe-data-generator/shoeData.json");
 mongoose.connect("mongodb://localhost/fike");
 
 let reviewSchema = mongoose.Schema({
+  sku: String,
   reviews: [
     {
       user: String,
@@ -27,9 +28,9 @@ let save = (file, callBack) => {
 };
 
 let findAll = (obj, callBack) => {
-  Repo.find(obj, function(err, docs) {
+  customerReview.find(obj, function(err, docs) {
     if (err) {
-      console.log("I AM GETTING AN ERRO");
+      console.log("I AM GETTING AN ERROR");
     } else {
       callBack(null, docs);
     }
