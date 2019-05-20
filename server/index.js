@@ -17,6 +17,7 @@ app.get("/reviews", (req, res) => {
       res.send(reviews);
     }
   });
+  
 });
 
 app.listen(port, function() {

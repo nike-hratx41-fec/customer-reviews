@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
+
 const reviews = require("../../shoe-data-generator/shoeData.json");
-mongoose.connect("mongodb://localhost/fike");
+const uri = require("../password");
+
+mongoose.connect(uri,{useNewUrlParser: true});
+
+
+
+
 
 let reviewSchema = mongoose.Schema({
   sku: String,
@@ -17,12 +24,14 @@ let reviewSchema = mongoose.Schema({
 
 let customerReview = mongoose.model("customerReview", reviewSchema);
 
+
+
 let save = (file, callBack) => {
   customerReview.insertMany(file, (err, res) => {
     if (err) {
-      callBack(err, null);
+      console.log(err, null);
     } else {
-      callBack(null, res);
+      console.log(err);
     }
   });
 };
@@ -37,7 +46,17 @@ let findAll = (obj, callBack) => {
   });
 };
 
-//save(reviews);
+
+// customerReview.create(reviews, (err)=>{
+//   if (err){
+//     console.log(err)
+//   }else{
+//     console.log('success')
+//   }
+// })
+
+
+//save(reviews)
 
 module.exports.findAll = findAll;
 module.exports.save = save;
