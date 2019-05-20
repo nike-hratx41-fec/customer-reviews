@@ -1,62 +1,62 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const reviews = require("../../shoe-data-generator/shoeData.json");
-const uri = require("../password");
+// const reviews = require("../../shoe-data-generator/shoeData.json");
+// const uri = require("../password");
 
-mongoose.connect(uri,{useNewUrlParser: true});
-
-
+// mongoose.connect(uri,{useNewUrlParser: true});
 
 
 
-let reviewSchema = mongoose.Schema({
-  sku: String,
-  reviews: [
-    {
-      user: String,
-      date: String,
-      stars: String,
-      title: String,
-      description: String
-    }
-  ]
-});
-
-let customerReview = mongoose.model("customerReview", reviewSchema);
 
 
+// let reviewSchema = mongoose.Schema({
+//   sku: String,
+//   reviews: [
+//     {
+//       user: String,
+//       date: String,
+//       stars: String,
+//       title: String,
+//       description: String
+//     }
+//   ]
+// });
 
-let save = (file, callBack) => {
-  customerReview.insertMany(file, (err, res) => {
-    if (err) {
-      console.log(err, null);
-    } else {
-      console.log(err);
-    }
-  });
-};
-
-let findAll = (obj, callBack) => {
-  customerReview.find(obj, function(err, docs) {
-    if (err) {
-      console.log("I AM GETTING AN ERROR");
-    } else {
-      callBack(null, docs);
-    }
-  });
-};
+// let customerReview = mongoose.model("customerReview", reviewSchema);
 
 
-// customerReview.create(reviews, (err)=>{
-//   if (err){
-//     console.log(err)
-//   }else{
-//     console.log('success')
-//   }
-// })
+
+// let save = (file, callBack) => {
+//   customerReview.insertMany(file, (err, res) => {
+//     if (err) {
+//       console.log(err, null);
+//     } else {
+//       console.log(err);
+//     }
+//   });
+// };
+
+// let findAll = (obj, callBack) => {
+//   customerReview.find(obj, function(err, docs) {
+//     if (err) {
+//       console.log("I AM GETTING AN ERROR");
+//     } else {
+//       callBack(null, docs);
+//     }
+//   });
+// };
 
 
-//save(reviews)
+// // customerReview.create(reviews, (err)=>{
+// //   if (err){
+// //     console.log(err)
+// //   }else{
+// //     console.log('success')
+// //   }
+// // })
 
-module.exports.findAll = findAll;
-module.exports.save = save;
+
+// //save(reviews)
+
+// module.exports.findAll = findAll;
+// module.exports.save = save;
