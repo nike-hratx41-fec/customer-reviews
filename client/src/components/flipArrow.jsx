@@ -2,7 +2,6 @@ import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { IconContext } from "react-icons";
-import ReactStars from "react-stars";
 
 const FlipArrow = props => {
   if (props.expanded === false) {
