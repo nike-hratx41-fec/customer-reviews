@@ -1,51 +1,44 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// const reviews = require("../../shoe-data-generator/shoeData.json");
-// const uri = require("../password");
+const reviews = require("../../shoe-data-generator/shoeData.json");
+const uri = require("../password");
 
-// mongoose.connect(uri,{useNewUrlParser: true});
+mongoose.connect(uri, { useNewUrlParser: true });
 
+let reviewSchema = mongoose.Schema({
+  sku: String,
+  reviews: [
+    {
+      user: String,
+      date: String,
+      stars: String,
+      title: String,
+      description: String
+    }
+  ]
+});
 
+let customerReview = mongoose.model("customerReview", reviewSchema);
 
+let save = (file, callBack) => {
+  customerReview.insertMany(file, (err, res) => {
+    if (err) {
+      console.log(err, null);
+    } else {
+      console.log(err);
+    }
+  });
+};
 
-
-// let reviewSchema = mongoose.Schema({
-//   sku: String,
-//   reviews: [
-//     {
-//       user: String,
-//       date: String,
-//       stars: String,
-//       title: String,
-//       description: String
-//     }
-//   ]
-// });
-
-// let customerReview = mongoose.model("customerReview", reviewSchema);
-
-
-
-// let save = (file, callBack) => {
-//   customerReview.insertMany(file, (err, res) => {
-//     if (err) {
-//       console.log(err, null);
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// };
-
-// let findAll = (obj, callBack) => {
-//   customerReview.find(obj, function(err, docs) {
-//     if (err) {
-//       console.log("I AM GETTING AN ERROR");
-//     } else {
-//       callBack(null, docs);
-//     }
-//   });
-// };
-
+let findAll = (obj, callBack) => {
+  customerReview.find(obj, function(err, docs) {
+    if (err) {
+      console.log("I AM GETTING AN ERROR");
+    } else {
+      callBack(null, docs);
+    }
+  });
+};
 
 // // customerReview.create(reviews, (err)=>{
 // //   if (err){
@@ -55,8 +48,7 @@
 // //   }
 // // })
 
-
 // //save(reviews)
 
-// module.exports.findAll = findAll;
-// module.exports.save = save;
+module.exports.findAll = findAll;
+module.exports.save = save;
