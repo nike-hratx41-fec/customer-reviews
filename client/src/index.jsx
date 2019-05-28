@@ -7,6 +7,10 @@ import FlipArrow from "./components/flipArrow.jsx";
 // import { IoIosArrowDown } from "react-icons/io";
 // import { IconContext } from "react-icons";
 
+const mousePointer = {
+  cursor: "pointer"
+};
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,19 +20,23 @@ class App extends React.Component {
       reviews: [],
       totalStars: 0,
       reviewsToShow: 0,
-      expanded: false
+      expanded1: false,
+      expanded2: false
     };
     this.calculateAvgStars = this.calculateAvgStars.bind(this);
-    this.showMore = this.showMore.bind(this);
+    this.flipArrow1 = this.flipArrow1.bind(this);
+    this.flipArrow2 = this.flipArrow2.bind(this);
   }
 
-  showMore() {
-    this.state.reviewsToShow === 0
-      ? this.setState({
-          reviewsToShow: 3,
-          expanded: true
-        })
-      : this.setState({ reviewsToShow: 0, expanded: false });
+  flipArrow1() {
+    this.setState({
+      expanded1: !this.state.expanded1
+    });
+  }
+  flipArrow2() {
+    this.setState({
+      expanded2: !this.state.expanded2
+    });
   }
 
   componentDidMount() {
@@ -38,7 +46,7 @@ class App extends React.Component {
           currentReviews: reviewData.data[0].reviews,
           reviews: reviewData.data
         });
-        console.log(reviewData.data[0].reviews);
+        //console.log(reviewData.data[0].reviews);
       })
       .then(() => {
         this.setState({
@@ -55,7 +63,7 @@ class App extends React.Component {
     let total = 0;
     for (let i = 0; i < reviewsArr.length; i++) {
       let stars = Number(reviewsArr[i].stars);
-      console.log(typeof stars);
+      //console.log(typeof stars);
       total = total + stars;
     }
     return total / reviewsArr.length;
@@ -68,30 +76,16 @@ class App extends React.Component {
       <div className="mainBox">
         <div className="cr-wrapper">
           <div className="cr-header">
-            <div className="cr-header-title">
-              <h3 onClick={this.showMore}>
-                Reviews ({this.state.currentReviews.length})
-                <StarRatings
-                  rating={this.state.totalStars}
-                  starRatedColor="blue"
-                  numberOfStars={5}
-                  name="rating"
-                  starDimension="20px"
-                  starSpacing="15px"
-                  starRatedColor="rgb(00, 00,00)"
-                  isSelectable="false"
-                  starHoverColor="null"
-                />
-                <FlipArrow expanded={this.state.expanded} />
-              </h3>
-            </div>
+            <div className="cr-header-title" />
           </div>
 
           <ReviewGenerator
             currReviews={this.state.currentReviews}
-            expandedState={this.state.expanded}
+            expandedState1={this.state.expanded1}
+            expandedState2={this.state.expanded2}
             reviewsToShow={this.state.reviewsToShow}
-            showMore={this.showMore}
+            flipArrow1={this.flipArrow1}
+            flipArrow2={this.flipArrow2}
             starAvg={this.state.totalStars}
           />
         </div>
@@ -103,3 +97,18 @@ class App extends React.Component {
 export default App;
 
 ReactDOM.render(<App />, document.getElementById("customer-reviews"));
+// Reviews({ props.currReviews.length })
+//   < StarRatings
+// rating = { props.starAvg }
+// starRatedColor = "blue"
+// numberOfStars = { 5}
+// name = "rating"
+// starDimension = "20px"
+// starSpacing = "15px"
+// starRatedColor = "rgb(00, 00,00)"
+// isSelectable = "false"
+// starHoverColor = "null"
+//   />
+//   <span>
+//     <FlipArrow expanded={props.expandedState} />
+//   </span>

@@ -4,6 +4,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import { IconContext } from "react-icons";
 
 const FlipArrow = props => {
+  console.log(props.expanded);
   if (props.expanded === false) {
     return (
       <div>
@@ -11,7 +12,7 @@ const FlipArrow = props => {
           value={{
             color: "black",
             className: "global-class-name",
-            size: "2em"
+            size: "1em"
           }}
         >
           <div>
@@ -27,7 +28,7 @@ const FlipArrow = props => {
           value={{
             color: "black",
             className: "global-class-name",
-            size: "2em"
+            size: "1em"
           }}
         >
           <div>
