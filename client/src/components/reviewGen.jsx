@@ -2,7 +2,7 @@ import React from "react";
 
 import FlipArrow from "./flipArrow.jsx";
 import StarRatings from "react-star-ratings";
-import AvgStarGen from "./AvgStarGen.jsx";
+//import AvgStarGen from "./AvgStarGen.jsx";
 import ModalTitle from "./sliders.jsx";
 import "../styles/review-generator.css";
 

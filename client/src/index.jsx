@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import Axios from "axios";
 import ReviewGenerator from "./components/reviewGen.jsx";
 import SignIn from "./components/sign-in.jsx";
-import ModalTitle from "./components/sliders.jsx";
-import StarRatings from "react-star-ratings";
-import FlipArrow from "./components/flipArrow.jsx";
+// import ModalTitle from "./components/sliders.jsx";
+// import StarRatings from "react-star-ratings";
+// import FlipArrow from "./components/flipArrow.jsx";
 // import { IoIosArrowDown } from "react-icons/io";
 // import { IconContext } from "react-icons";
 
