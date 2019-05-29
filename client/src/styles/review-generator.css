@@ -1,0 +1,100 @@
+.accordion {
+  box-sizing: border-box;
+  width: 25%;
+  padding-top: 40px;
+}
+.card-header {
+  background-color: white;
+  cursor: pointer;
+  height: 80px;
+}
+
+#shippingInfo {
+  color: #111;
+  font-family: "Nike TG", Oswald, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px !important;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 0.8rem;
+}
+
+#reviews {
+  color: #111;
+  font-family: "Nike TG", Oswald, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 0.8rem;
+}
+
+#reviewStar-arrow-div {
+  padding: 0 4px;
+  text-align: right;
+  position: absolute;
+  top: 11px;
+
+  right: 0;
+}
+
+.review-arrow {
+  display: inline-block;
+  position: relative;
+  width: 18px;
+  height: 8px;
+  top: 14px;
+  right: 10px;
+}
+
+.avg-stars-button {
+  display: inline-block;
+  position: relative;
+  left: 20;
+  top: 5;
+}
+
+.modal-body {
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  padding: 0 24px;
+}
+
+.review-star {
+  font-size: 20px;
+  position: relative;
+  top: 11px;
+  right: 16px;
+}
+
+.card {
+  outline: none;
+  border-radius: 0px;
+  position: relative;
+  display: flex;
+}
+
+.box-title {
+  padding: 0 4px;
+  text-align: left;
+}
+
+.shipping-arrow-div {
+  right: 12px;
+  position: absolute;
+  top: 29px;
+}
+
+.review-item {
+  border-bottom: 1px solid #bdbdbd;
+  max-width: 100%;
+}
+
+.modal-header {
+  height: 350px;
+  border-bottom: 0;
+}

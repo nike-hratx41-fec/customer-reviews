@@ -12,7 +12,7 @@ const FlipArrow = props => {
           value={{
             color: "black",
             className: "global-class-name",
-            size: "1em"
+            size: "1.3em"
           }}
         >
           <div>
@@ -28,7 +28,7 @@ const FlipArrow = props => {
           value={{
             color: "black",
             className: "global-class-name",
-            size: "1em"
+            size: "1.3em"
           }}
         >
           <div>

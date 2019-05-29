@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Axios from "axios";
 import ReviewGenerator from "./components/reviewGen.jsx";
+import SignIn from "./components/sign-in.jsx";
+import ModalTitle from "./components/sliders.jsx";
 import StarRatings from "react-star-ratings";
 import FlipArrow from "./components/flipArrow.jsx";
 // import { IoIosArrowDown } from "react-icons/io";
@@ -21,11 +23,21 @@ class App extends React.Component {
       totalStars: 0,
       reviewsToShow: 0,
       expanded1: false,
-      expanded2: false
+      expanded2: false,
+      modalShow: false
     };
     this.calculateAvgStars = this.calculateAvgStars.bind(this);
     this.flipArrow1 = this.flipArrow1.bind(this);
     this.flipArrow2 = this.flipArrow2.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+    this.modalOpen = this.modalOpen.bind(this);
+  }
+  modalClose() {
+    this.setState({ modalShow: false });
+  }
+
+  modalOpen() {
+    this.setState({ modalShow: true });
   }
 
   flipArrow1() {
@@ -57,6 +69,12 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
+  // writeReview(string){
+  //   Axios.post("/reviews",{
+
+  //   })
+  // }
+
   calculateAvgStars(arr) {
     const reviewsArr = arr;
     console.log("this is review arr", reviewsArr);
@@ -71,7 +89,7 @@ class App extends React.Component {
 
   render() {
     const { open } = this.state;
-
+    console.log("i should be showing a modal", this.state.modalShow);
     return (
       <div className="mainBox">
         <div className="cr-wrapper">
@@ -87,7 +105,10 @@ class App extends React.Component {
             flipArrow1={this.flipArrow1}
             flipArrow2={this.flipArrow2}
             starAvg={this.state.totalStars}
+            modalOpen={this.modalOpen}
           />
+
+          <SignIn show={this.state.modalShow} onHide={this.modalClose} />
         </div>
       </div>
     );

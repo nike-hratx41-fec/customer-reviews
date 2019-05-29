@@ -10,8 +10,8 @@ const AvgStarGen = props => {
         starRatedColor="blue"
         numberOfStars={5}
         name="rating"
-        starDimension="20px"
-        starSpacing="15px"
+        starDimension="18px"
+        starSpacing="2px"
         starRatedColor="rgb(00, 00,00)"
         isSelectable="false"
         starHoverColor="null"
@@ -19,3 +19,5 @@ const AvgStarGen = props => {
     </div>
   );
 };
+
+export default AvgStarGen;

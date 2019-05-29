@@ -1,26 +1,18 @@
 import React from "react";
 
-import StarRatings from "react-star-ratings";
 import FlipArrow from "./flipArrow.jsx";
-import { MdKeyboardArrowDown } from "react-icons/md";
-
-const mousePointer = {
-  cursor: "pointer"
-};
+import StarRatings from "react-star-ratings";
+import AvgStarGen from "./AvgStarGen.jsx";
+import ModalTitle from "./sliders.jsx";
+import "../styles/review-generator.css";
 
 const underline = {
   textDecoration: "underline"
 };
 
-const boxSize = {
-  boxSizing: "border-box",
-  width: "25%",
-  paddingTop: "40px"
-};
-
 const ReviewGenerator = props => {
   return (
-    <div className="accordion" id="accordionExample" style={boxSize}>
+    <div className="accordion" id="accordionExample">
       <div className="card">
         <div
           className="card-header"
@@ -30,42 +22,16 @@ const ReviewGenerator = props => {
           aria-expanded="false"
           aria-controls="collapseOne"
           onClick={props.flipArrow1}
-          style={{
-            backgroundColor: "white",
-            cursor: "pointer",
-            height: "80px"
-          }}
         >
-          <h3
-            style={{
-              color: "#111",
-              fontFamily: "Helvetica Neue, Helvetica,Arial,sans-serif",
-              fontWeight: 500,
-              fontSize: "20px",
-              position: "relative",
-              transform: "translateY(-50%)",
-              top: "50%",
-              overflow: "hidden",
-              whiteSpace: "nowrap",
-              margin: "auto"
-            }}
-          >
-            Free Shipping & Returns
-          </h3>
-
-          <span
-            style={{
-              position: "absolute",
-              top: 27,
-              left: 390,
-              width: "200px",
-              height: "1auto"
-            }}
-          >
+          <div className="box-title">
+            <h3 id="shippingInfo">Free Shipping & Returns</h3>
+          </div>
+        </div>
+        <div className="shipping-arrow-div">
+          <span className="arrows">
             <FlipArrow expanded={props.expandedState1} />
           </span>
         </div>
-
         <div
           id="collapseOne"
           className="collapse"
@@ -95,57 +61,28 @@ const ReviewGenerator = props => {
           aria-expanded="false"
           aria-controls="collapseTwo"
           onClick={props.flipArrow2}
-          style={{
-            backgroundColor: "white",
-            cursor: "pointer",
-            height: "80px"
-          }}
         >
-          <h3
-            style={{
-              color: "#111",
-              fontFamily: "Helvetica Neue, Helvetica,Arial,sans-serif",
-              fontWeight: 500,
-              fontSize: "20px",
-              spacing: "10px",
-              overflow: "hidden",
-              whiteSpace: "nowrap",
-              position: "relative",
-              transform: "translateY(-50%)",
-              top: "50%"
-            }}
-          >
-            Reviews({props.currReviews.length})
-          </h3>
-          <div
-            style={{
-              position: "absolute",
-              top: 23,
-              left: 275,
-              width: "200px",
-              height: "1auto"
-            }}
-          >
-            <StarRatings
-              rating={props.starAvg}
-              starRatedColor="blue"
-              numberOfStars={5}
-              name="rating"
-              starDimension="18px"
-              starSpacing="2px"
-              starRatedColor="rgb(00, 00,00)"
-              isSelectable="false"
-              starHoverColor="null"
-            />
-            <span
-              style={{
-                display: "inline-block",
-                position: "absolute",
-                left: 116
-              }}
-            >
-              <FlipArrow expanded={props.expandedState2} />
-            </span>
+          <div className="review-count">
+            <h3 id="reviews">Reviews({props.currReviews.length})</h3>
+            <div id="reviewStar-arrow-div">
+              <span className="review-star">
+                <StarRatings
+                  rating={props.starAvg}
+                  starRatedColor="blue"
+                  numberOfStars={5}
+                  name="rating"
+                  starDimension="18px"
+                  starSpacing="2px"
+                  starRatedColor="rgb(00, 00,00)"
+                  isSelectable="false"
+                  starHoverColor="null"
+                />
+              </span>
+
+              <span className="review-arrow">
+                <FlipArrow expanded={props.expandedState2} />
+              </span>
+            </div>
           </div>
         </div>
         <div
@@ -167,27 +104,18 @@ const ReviewGenerator = props => {
                 isSelectable="false"
                 starHoverColor="null"
               />
-              <span
-                style={{
-                  display: "inline-block",
-                  position: "relative",
-                  left: 20,
-                  top: 5
-                }}
-              >
-                {props.starAvg} Stars
-              </span>
+              <span className="avg-stars-button">{props.starAvg} Stars</span>
               <p>
                 <button
                   className="btn btn-link collapsed"
                   type="button"
                   style={{ textDecoration: "underline", color: "black" }}
+                  onClick={props.modalOpen}
                 >
                   Write a Review
                 </button>
               </p>
             </div>
-
             {props.currReviews.slice(-3).map(element => (
               <div className="review-item">
                 <p>{element.title}</p>
@@ -211,9 +139,66 @@ const ReviewGenerator = props => {
               className="btn btn-link collapsed"
               type="button"
               style={{ textDecoration: "underline", color: "black" }}
+              data-toggle="modal"
+              data-target="#exampleModalLong"
             >
               More Reviews
             </button>
+
+            <div
+              className="modal fade"
+              id="exampleModalLong"
+              tabIndex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLongTitle"
+              aria-hidden="true"
+            >
+              <div
+                className="modal-dialog"
+                role="document"
+                style={{ maxWidth: "100%", maxHeight: "99%" }}
+              >
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <ModalTitle
+                      currReviews={props.currReviews}
+                      starAvg={props.starAvg}
+                    />
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    {props.currReviews.map(element => (
+                      <div className="review-item">
+                        <p>{element.title}</p>
+                        <StarRatings
+                          rating={Number(element.stars)}
+                          numberOfStars={5}
+                          name="rating"
+                          starDimension="13px"
+                          starSpacing="1.5px"
+                          starRatedColor="rgb(00, 00,00)"
+                          isSelectable="false"
+                          starHoverColor="null"
+                        />
+                        <p style={{ display: "inline-block", padding: "5px" }}>
+                          {element.user} - {element.date}
+                        </p>
+                        <p>{element.description}</p>
+                        <br />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="modal-footer">FOOTER</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

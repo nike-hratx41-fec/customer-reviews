@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const reviews = require("../../shoe-data-generator/shoeData.json");
+//const reviews = require("../../shoe-data-generator/shoeData.json");
 const uri = require("../password");
 
 mongoose.connect(uri, { useNewUrlParser: true });
