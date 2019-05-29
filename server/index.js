@@ -2,7 +2,7 @@ const express = require("express");
 let app = express();
 const bodyparser = require("body-parser");
 
-const mongo = require("../database/index");
+const mongo = require("../password");
 let port = 3008;
 
 app.use(bodyparser.json());
