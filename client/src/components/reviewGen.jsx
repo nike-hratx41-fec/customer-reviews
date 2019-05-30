@@ -7,7 +7,8 @@ import ModalTitle from "./sliders.jsx";
 import "../styles/review-generator.css";
 
 const underline = {
-  textDecoration: "underline"
+  textDecoration: "underline",
+  fontWeight: 500
 };
 
 const ReviewGenerator = props => {
@@ -26,12 +27,13 @@ const ReviewGenerator = props => {
           <div className="box-title">
             <h3 id="shippingInfo">Free Shipping & Returns</h3>
           </div>
+          <div className="shipping-arrow-div">
+            <span className="arrows">
+              <FlipArrow expanded={props.expandedState1} />
+            </span>
+          </div>
         </div>
-        <div className="shipping-arrow-div">
-          <span className="arrows">
-            <FlipArrow expanded={props.expandedState1} />
-          </span>
-        </div>
+
         <div
           id="collapseOne"
           className="collapse"
@@ -43,7 +45,7 @@ const ReviewGenerator = props => {
               Free standard shipping and 30-day free returns, only with
               NikePlus.
               <p style={underline}>
-                Learn more. Return policy exclusions apply.
+                Learn more Return policy exclusions apply.
               </p>
               <li>Standard / Arrives 2-4 Business Days</li>
               <li>Two-Day / Arrives 2-3 Business Days</li>
@@ -63,7 +65,7 @@ const ReviewGenerator = props => {
           onClick={props.flipArrow2}
         >
           <div className="review-count">
-            <h3 id="reviews">Reviews({props.currReviews.length})</h3>
+            <h3 id="reviews">Reviews ({props.currReviews.length})</h3>
             <div id="reviewStar-arrow-div">
               <span className="review-star">
                 <StarRatings
@@ -92,20 +94,22 @@ const ReviewGenerator = props => {
           data-parent="#accordionExample"
         >
           <div className="card-body">
-            <div className="starsAvg">
-              <StarRatings
-                rating={props.starAvg}
-                starRatedColor="blue"
-                numberOfStars={5}
-                name="rating"
-                starDimension="18px"
-                starSpacing="2px"
-                starRatedColor="rgb(00, 00,00)"
-                isSelectable="false"
-                starHoverColor="null"
-              />
+            <div className="stars-avg">
+              <div id="card-body-stars">
+                <StarRatings
+                  rating={props.starAvg}
+                  starRatedColor="blue"
+                  numberOfStars={5}
+                  name="rating"
+                  starDimension="18px"
+                  starSpacing="2px"
+                  starRatedColor="rgb(00, 00,00)"
+                  isSelectable="false"
+                  starHoverColor="null"
+                />
+              </div>
               <span className="avg-stars-button">{props.starAvg} Stars</span>
-              <p>
+              <span id="write-review">
                 <button
                   className="btn btn-link collapsed"
                   type="button"
@@ -114,7 +118,7 @@ const ReviewGenerator = props => {
                 >
                   Write a Review
                 </button>
-              </p>
+              </span>
             </div>
             {props.currReviews.slice(-3).map(element => (
               <div className="review-item">
@@ -135,15 +139,17 @@ const ReviewGenerator = props => {
                 <p>{element.description}</p>
               </div>
             ))}
-            <button
-              className="btn btn-link collapsed"
-              type="button"
-              style={{ textDecoration: "underline", color: "black" }}
-              data-toggle="modal"
-              data-target="#exampleModalLong"
-            >
-              More Reviews
-            </button>
+            <div id="more-reviews">
+              <button
+                className="btn btn-link collapsed"
+                type="button"
+                style={{ textDecoration: "underline", color: "black" }}
+                data-toggle="modal"
+                data-target="#exampleModalLong"
+              >
+                More Reviews
+              </button>
+            </div>
 
             <div
               className="modal fade"

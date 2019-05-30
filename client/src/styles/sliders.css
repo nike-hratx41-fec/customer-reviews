@@ -7,7 +7,10 @@
 }
 
 #modal-stars {
-  top: 10px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 0px;
 }
 
 /* .modal-title {
@@ -32,10 +35,10 @@
 }
 
 #review-length {
-  height: 39px;
-  width: 186px;
+  height: 135px;
+  width: 205px;
   left: 47rem;
-  top: 13rem;
+  top: 5rem;
   position: absolute;
   font-size: 28px;
   text-transform: uppercase;
@@ -44,6 +47,14 @@
   font-weight: 500;
   display: inline-block;
   line-height: 1;
+  margin-bottom: 7rem;
   margin: 0 5px;
   font-family: "Nike TG", Oswald, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#modal-review-amount {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 77px;
 }

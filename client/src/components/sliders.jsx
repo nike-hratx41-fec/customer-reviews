@@ -18,19 +18,6 @@ const ModalTitle = props => {
   console.log(props);
   return (
     <div id="modal-title-div">
-      <div id="modal-stars">
-        <StarRatings
-          rating={props.starAvg}
-          starRatedColor="blue"
-          numberOfStars={5}
-          name="rating"
-          starDimension="18px"
-          starSpacing="2px"
-          starRatedColor="rgb(00, 00,00)"
-          isSelectable="false"
-          starHoverColor="null"
-        />
-      </div>
       <div>
         <h5
           className="modal-title"
@@ -51,7 +38,22 @@ const ModalTitle = props => {
           }}
         />
       </div>
-      <div id="review-length">{props.currReviews.length} Reviews</div>
+      <div id="review-length">
+        <span id="modal-review-amount">{props.currReviews.length} Reviews</span>
+        <div id="modal-stars">
+          <StarRatings
+            rating={props.starAvg}
+            starRatedColor="blue"
+            numberOfStars={5}
+            name="rating"
+            starDimension="18px"
+            starSpacing="2px"
+            starRatedColor="rgb(00, 00,00)"
+            isSelectable="false"
+            starHoverColor="null"
+          />
+        </div>
+      </div>
       <div id="all-sliders">
         <div id="slider-one">
           <Slider />
