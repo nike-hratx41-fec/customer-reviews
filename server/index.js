@@ -6,7 +6,7 @@ const mongo = require("../database/index.js");
 let port = 3008;
 
 app.use(bodyparser.json());
-app.use(express.static(__dirname + "/../client/dist"));
+//app.use(express.static(__dirname + "/../client/dist"));
 
 app.get("/reviews", (req, res) => {
   mongo.findAll({}, (err, reviews) => {
