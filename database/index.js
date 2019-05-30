@@ -35,6 +35,7 @@ let findAll = (obj, callBack) => {
     if (err) {
       console.log("I AM GETTING AN ERROR");
     } else {
+      console.log("sucess retreiving database stuff");
       callBack(null, docs);
     }
   });

@@ -52,13 +52,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log("im mounted");
     Axios.get("/reviews")
       .then(reviewData => {
         this.setState({
           currentReviews: reviewData.data[0].reviews,
           reviews: reviewData.data
         });
-        //console.log(reviewData.data[0].reviews);
+        console.log("ive reached .then ");
       })
       .then(() => {
         this.setState({
@@ -89,7 +90,7 @@ class App extends React.Component {
 
   render() {
     const { open } = this.state;
-    console.log("i should be showing a modal", this.state.modalShow);
+    //console.log("i should be showing a modal", this.state.modalShow);
     return (
       <div className="mainBox">
         <div className="cr-wrapper">
