@@ -120,8 +120,8 @@ const ReviewGenerator = props => {
                 </button>
               </span>
             </div>
-            {props.currReviews.slice(-3).map(element => (
-              <div className="review-item">
+            {props.currReviews.slice(-3).map((element,index) => (
+              <div className="review-item" key={index}>
                 <p>{element.title}</p>
                 <StarRatings
                   rating={Number(element.stars)}
@@ -180,8 +180,8 @@ const ReviewGenerator = props => {
                     </button>
                   </div>
                   <div className="modal-body">
-                    {props.currReviews.map(element => (
-                      <div className="review-item">
+                    {props.currReviews.map((element,index) => (
+                      <div className="review-item" key={index}>
                         <p>{element.title}</p>
                         <StarRatings
                           rating={Number(element.stars)}
