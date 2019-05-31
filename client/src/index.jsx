@@ -93,7 +93,7 @@ class CustomerReviews extends React.Component {
     //console.log("i should be showing a modal", this.state.modalShow);
     return (
       <div className="mainBox">
-        <div className="cr-wrapper">
+        <div className="cr-wrCustomerReviewser">
           <div className="cr-header">
             <div className="cr-header-title" />
           </div>
@@ -116,8 +116,8 @@ class CustomerReviews extends React.Component {
   }
 }
 
-export default App;
-window.App = App;
+export default CustomerReviews;
+window.CustomerReviews = CustomerReviews;
 
 ReactDOM.render(<CustomerReviews />, document.getElementById("customer-reviews"));
 // Reviews({ props.currReviews.length })
