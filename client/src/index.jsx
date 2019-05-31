@@ -53,7 +53,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log("im mounted");
-    Axios.get("/reviews")
+    Axios.get("http://ec2-3-16-213-178.us-east-2.compute.amazonaws.com/reviews")
       .then(reviewData => {
         this.setState({
           currentReviews: reviewData.data[0].reviews,

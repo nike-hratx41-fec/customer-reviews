@@ -1,14 +1,18 @@
 const express = require("express");
-let app = express();
+const cors = require("cors");
 const bodyparser = require("body-parser");
+let app = express();
+let port = 3008;
 
 const mongo = require("../database/index.js");
-let port = 3008;
+
+app.use(cors());
 
 app.use(bodyparser.json());
 app.use(express.static(__dirname + "/../client/dist"));
 
 app.get("/reviews", (req, res) => {
+  res.header("Access-Control-Allow-Origin");
   mongo.findAll({}, (err, reviews) => {
     if (err) {
       console.log("error inside findall: ", err);
