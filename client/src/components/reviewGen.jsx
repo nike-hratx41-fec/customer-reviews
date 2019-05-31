@@ -213,3 +213,4 @@ const ReviewGenerator = props => {
 };
 
 export default ReviewGenerator;
+window.ReviewGenerator = ReviewGenerator;

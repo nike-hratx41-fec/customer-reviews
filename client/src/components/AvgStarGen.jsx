@@ -21,3 +21,4 @@ const AvgStarGen = props => {
 };
 
 export default AvgStarGen;
+window.AvgStarGen = AvgStarGen;

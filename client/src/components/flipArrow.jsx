@@ -41,3 +41,4 @@ const FlipArrow = props => {
 };
 
 export default FlipArrow;
+window.FlipArrow = FlipArrow;

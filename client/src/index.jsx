@@ -13,7 +13,7 @@ const mousePointer = {
   cursor: "pointer"
 };
 
-class App extends React.Component {
+class CustomerReviews extends React.Component {
   constructor(props) {
     super(props);
 
@@ -117,8 +117,9 @@ class App extends React.Component {
 }
 
 export default App;
+window.App = App;
 
-ReactDOM.render(<App />, document.getElementById("customer-reviews"));
+ReactDOM.render(<CustomerReviews />, document.getElementById("customer-reviews"));
 // Reviews({ props.currReviews.length })
 //   < StarRatings
 // rating = { props.starAvg }

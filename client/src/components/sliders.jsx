@@ -71,3 +71,4 @@ const ModalTitle = props => {
 };
 
 export default ModalTitle;
+window.ModalTitle = ModalTitle;

@@ -3,9 +3,18 @@ var SRC_DIR = path.join(__dirname, "/client/src");
 var DIST_DIR = path.join(__dirname, "/client/dist");
 
 module.exports = {
-  entry: `${SRC_DIR}/index.jsx`,
+  entry: {
+    components: [
+       `${SRC_DIR}/components/reviewGen.jsx`,
+       `${SRC_DIR}/components/flipArrow.jsx`,
+       `${SRC_DIR}/components/sign-in.jsx`,
+       `${SRC_DIR}/components/sliders.jsx`,
+      `${SRC_DIR}/components/AvgStarGen.jsx`,
+      `${SRC_DIR}/index.jsx`
+    ]
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name]-bundle.js",
     path: DIST_DIR
   },
   module: {
