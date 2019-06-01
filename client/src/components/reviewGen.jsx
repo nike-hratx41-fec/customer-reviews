@@ -12,6 +12,7 @@ const underline = {
 };
 
 const ReviewGenerator = props => {
+  console.log(props)
   return (
     <div className="accordion" id="accordionExample">
       <div className="card">

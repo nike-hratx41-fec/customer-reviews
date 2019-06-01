@@ -4,7 +4,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import { IconContext } from "react-icons";
 
 const FlipArrow = props => {
-  console.log(props.expanded);
+  //console.log(props.expanded);
   if (props.expanded === false) {
     return (
       <div>

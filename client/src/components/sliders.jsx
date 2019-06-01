@@ -15,7 +15,7 @@ import Slider, { Range } from "rc-slider";
 // };
 
 const ModalTitle = props => {
-  console.log(props);
+ // console.log(props);
   return (
     <div id="modal-title-div">
       <div>

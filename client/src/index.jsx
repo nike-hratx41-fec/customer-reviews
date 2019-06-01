@@ -18,8 +18,8 @@ class CustomerReviews extends React.Component {
     super(props);
 
     this.state = {
+      sku: "CJ0066-900",
       currentReviews: [],
-      reviews: [],
       totalStars: 0,
       reviewsToShow: 0,
       expanded1: false,
@@ -31,6 +31,7 @@ class CustomerReviews extends React.Component {
     this.flipArrow2 = this.flipArrow2.bind(this);
     this.modalClose = this.modalClose.bind(this);
     this.modalOpen = this.modalOpen.bind(this);
+    this.findCurrReviews = this.findCurrReviews.bind(this);
   }
   modalClose() {
     this.setState({ modalShow: false });
@@ -51,23 +52,42 @@ class CustomerReviews extends React.Component {
     });
   }
 
-  componentDidMount() {
-    console.log("im mounted");
+  findCurrReviews(arr) {
+    let currentSku = this.state.sku;
+    let activeReview;
+    for (let x = 3; x < arr.length; x++) {
+      if (arr[x]["sku"] === currentSku) {
+        activeReview = arr[x].reviews;
+      }
+      break;
+    }
+    return activeReview;
+  }
+
+  fetchReviews() {
     Axios.get("http://ec2-3-16-213-178.us-east-2.compute.amazonaws.com/reviews")
       .then(reviewData => {
+        let activeReview = this.findCurrReviews(reviewData.data);
         this.setState({
-          currentReviews: reviewData.data[0].reviews,
-          reviews: reviewData.data
+          currentReviews: activeReview,
+          totalStars: this.calculateAvgStars(activeReview)
         });
-        console.log("ive reached .then ");
-      })
-      .then(() => {
-        this.setState({
-          totalStars: this.calculateAvgStars(this.state.reviews[0].reviews)
-        });
+        // Axios.get(
+        //   "graph.facebook.com/17873440459141021/top_media? user_id = 17841405309211844& fields=id, media_type, comments_count, like_count"
+        // ).then(results => {
+        //   console.log(results);
+        // });
       })
 
       .catch(err => console.log(err));
+  }
+
+  componentDidMount() {
+    //console.log("im mounted");
+    window.addEventListener("productClickEvent", event => {
+      this.setState({ sku: event.detail.sku });
+    });
+    this.fetchReviews();
   }
 
   // writeReview(string){
@@ -78,7 +98,7 @@ class CustomerReviews extends React.Component {
 
   calculateAvgStars(arr) {
     const reviewsArr = arr;
-    console.log("this is review arr", reviewsArr);
+    //console.log("this is review arr", reviewsArr);
     let total = 0;
     for (let i = 0; i < reviewsArr.length; i++) {
       let stars = Number(reviewsArr[i].stars);
@@ -109,6 +129,7 @@ class CustomerReviews extends React.Component {
             modalOpen={this.modalOpen}
           />
 
+          <div className="elfsight-app-2e9e9478-408c-46d2-b95a-fc6eb335785e" />
           <SignIn show={this.state.modalShow} onHide={this.modalClose} />
         </div>
       </div>
@@ -119,7 +140,10 @@ class CustomerReviews extends React.Component {
 export default CustomerReviews;
 window.CustomerReviews = CustomerReviews;
 
-ReactDOM.render(<CustomerReviews />, document.getElementById("customer-reviews"));
+ReactDOM.render(
+  <CustomerReviews />,
+  document.getElementById("customer-reviews")
+);
 // Reviews({ props.currReviews.length })
 //   < StarRatings
 // rating = { props.starAvg }

@@ -23,6 +23,18 @@ app.get("/reviews", (req, res) => {
   });
 });
 
+// app.get(
+//   "graph.facebook.com / 17873440459141021 / top_media ? user_id = 17841405309211844 & fields=id, media_type, comments_count, like_count",
+//   (req, res) => {
+//     if (err) {
+//       console.log("error retrieving insta", err);
+//     } else {
+//       console.log(req);
+//       res.send("got it");
+//     }
+//   }
+// );
+
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
