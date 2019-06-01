@@ -21,7 +21,7 @@ const ModalTitle = props => {
       <div id="img-box">
         <img src={props.imgUrl} className="modal-image" />
         <p id="shoe-name">{props.shoeName}</p>
-        <div id="price">$ {props.price}</div>
+        <div id="shoe-price-review">$ {props.price}</div>
       </div>
       <div>
         <h5
