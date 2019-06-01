@@ -83,7 +83,7 @@ class CustomerReviews extends React.Component {
   }
 
   componentDidMount() {
-    //console.log("im mounted");
+    console.log(document.getElementById);
     window.addEventListener("productClickEvent", event => {
       this.setState({ sku: event.detail.sku });
     });
@@ -129,7 +129,6 @@ class CustomerReviews extends React.Component {
             modalOpen={this.modalOpen}
           />
 
-          <div className="elfsight-app-2e9e9478-408c-46d2-b95a-fc6eb335785e" />
           <SignIn show={this.state.modalShow} onHide={this.modalClose} />
         </div>
       </div>

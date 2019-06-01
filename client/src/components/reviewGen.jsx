@@ -12,7 +12,7 @@ const underline = {
 };
 
 const ReviewGenerator = props => {
-  console.log(props)
+  console.log(props);
   return (
     <div className="accordion" id="accordionExample">
       <div className="card">
@@ -121,7 +121,7 @@ const ReviewGenerator = props => {
                 </button>
               </span>
             </div>
-            {props.currReviews.slice(-3).map((element,index) => (
+            {props.currReviews.slice(-3).map((element, index) => (
               <div className="review-item" key={index}>
                 <p>{element.title}</p>
                 <StarRatings
@@ -181,7 +181,7 @@ const ReviewGenerator = props => {
                     </button>
                   </div>
                   <div className="modal-body">
-                    {props.currReviews.map((element,index) => (
+                    {props.currReviews.map((element, index) => (
                       <div className="review-item" key={index}>
                         <p>{element.title}</p>
                         <StarRatings

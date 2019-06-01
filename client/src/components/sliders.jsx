@@ -15,7 +15,7 @@ import Slider, { Range } from "rc-slider";
 // };
 
 const ModalTitle = props => {
- // console.log(props);
+  // console.log(props);
   return (
     <div id="modal-title-div">
       <div>
@@ -56,14 +56,23 @@ const ModalTitle = props => {
       </div>
       <div id="all-sliders">
         <div id="slider-one">
-          <Slider />
+          <div className="slider-header">Size</div>
+          <Slider value={80} />
+          <div className="slider-ptag1">Runs Small</div>
+          <div className="slider-ptag2">Runs Big</div>
         </div>
 
         <div id="slider-two">
-          <Slider />
+          <div className="slider-header">Comfort</div>
+          <Slider value={90} />
+          <div className="slider-ptag1">Uncomfortable</div>
+          <div className="slider-ptag2">Very Comfortable</div>
         </div>
-        <div slider="slider-three">
-          <Slider />
+        <div id="slider-three">
+          <div className="slider-header">Durability</div>
+          <Slider value={60} />
+          <div className="slider-ptag1">Not Durable</div>
+          <div className="slider-ptag2">Very Durable</div>
         </div>
       </div>
     </div>

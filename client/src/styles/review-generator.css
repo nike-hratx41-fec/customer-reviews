@@ -77,6 +77,8 @@
   border-radius: 0px;
   position: relative;
   display: flex;
+  border-left: none;
+  border-right: none;
 }
 
 .box-title {
