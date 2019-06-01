@@ -18,6 +18,11 @@ const ModalTitle = props => {
   // console.log(props);
   return (
     <div id="modal-title-div">
+      <div id="img-box">
+        <img src={props.imgUrl} className="modal-image" />
+        <p id="shoe-name">{props.shoeName}</p>
+        <div id="price">$ {props.price}</div>
+      </div>
       <div>
         <h5
           className="modal-title"
@@ -46,7 +51,7 @@ const ModalTitle = props => {
             starRatedColor="blue"
             numberOfStars={5}
             name="rating"
-            starDimension="18px"
+            starDimension="19px"
             starSpacing="2px"
             starRatedColor="rgb(00, 00,00)"
             isSelectable="false"

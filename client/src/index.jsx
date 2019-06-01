@@ -3,11 +3,6 @@ import ReactDOM from "react-dom";
 import Axios from "axios";
 import ReviewGenerator from "./components/reviewGen.jsx";
 import SignIn from "./components/sign-in.jsx";
-// import ModalTitle from "./components/sliders.jsx";
-// import StarRatings from "react-star-ratings";
-// import FlipArrow from "./components/flipArrow.jsx";
-// import { IoIosArrowDown } from "react-icons/io";
-// import { IconContext } from "react-icons";
 
 const mousePointer = {
   cursor: "pointer"
@@ -19,12 +14,15 @@ class CustomerReviews extends React.Component {
 
     this.state = {
       sku: "CJ0066-900",
+      imgUrl: "",
       currentReviews: [],
       totalStars: 0,
       reviewsToShow: 0,
       expanded1: false,
       expanded2: false,
-      modalShow: false
+      modalShow: false,
+      price: 0,
+      shoeName: "something"
     };
     this.calculateAvgStars = this.calculateAvgStars.bind(this);
     this.flipArrow1 = this.flipArrow1.bind(this);
@@ -68,15 +66,32 @@ class CustomerReviews extends React.Component {
     Axios.get("http://ec2-3-16-213-178.us-east-2.compute.amazonaws.com/reviews")
       .then(reviewData => {
         let activeReview = this.findCurrReviews(reviewData.data);
+        console.log(reviewData.data);
         this.setState({
           currentReviews: activeReview,
           totalStars: this.calculateAvgStars(activeReview)
         });
-        // Axios.get(
-        //   "graph.facebook.com/17873440459141021/top_media? user_id = 17841405309211844& fields=id, media_type, comments_count, like_count"
-        // ).then(results => {
-        //   console.log(results);
-        // });
+
+        Axios.get(
+          `http://ec2-18-225-10-188.us-east-2.compute.amazonaws.com/api/images/${
+            this.state.sku
+          }`
+        ).then(results => {
+          this.setState({
+            imgUrl: results.data[0]
+          });
+        });
+
+        Axios.get(
+          `http://ec2-18-225-10-188.us-east-2.compute.amazonaws.com/api/title/${
+            this.state.sku
+          }`
+        ).then(results => {
+          this.setState({
+            shoeName: results.data.productName,
+            price: results.data.price
+          });
+        });
       })
 
       .catch(err => console.log(err));
@@ -127,6 +142,9 @@ class CustomerReviews extends React.Component {
             flipArrow2={this.flipArrow2}
             starAvg={this.state.totalStars}
             modalOpen={this.modalOpen}
+            imgUrl={this.state.imgUrl}
+            shoeName={this.state.shoeName}
+            price={this.state.price}
           />
 
           <SignIn show={this.state.modalShow} onHide={this.modalClose} />

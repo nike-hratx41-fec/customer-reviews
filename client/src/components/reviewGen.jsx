@@ -2,13 +2,20 @@ import React from "react";
 
 import FlipArrow from "./flipArrow.jsx";
 import StarRatings from "react-star-ratings";
-//import AvgStarGen from "./AvgStarGen.jsx";
+
 import ModalTitle from "./sliders.jsx";
 import "../styles/review-generator.css";
+import "../styles/sliders.css";
+import "rc-slider/assets/index.css";
+import Slider, { Range } from "rc-slider";
 
 const underline = {
   textDecoration: "underline",
   fontWeight: 500
+};
+
+const sliderNumber = () => {
+  return Math.floor(Math.random() * 100);
 };
 
 const ReviewGenerator = props => {
@@ -74,7 +81,7 @@ const ReviewGenerator = props => {
                   starRatedColor="blue"
                   numberOfStars={5}
                   name="rating"
-                  starDimension="18px"
+                  starDimension="19px"
                   starSpacing="2px"
                   starRatedColor="rgb(00, 00,00)"
                   isSelectable="false"
@@ -170,6 +177,9 @@ const ReviewGenerator = props => {
                     <ModalTitle
                       currReviews={props.currReviews}
                       starAvg={props.starAvg}
+                      imgUrl={props.imgUrl}
+                      shoeName={props.shoeName}
+                      price={props.price}
                     />
                     <button
                       type="button"
@@ -182,23 +192,57 @@ const ReviewGenerator = props => {
                   </div>
                   <div className="modal-body">
                     {props.currReviews.map((element, index) => (
-                      <div className="review-item" key={index}>
-                        <p>{element.title}</p>
-                        <StarRatings
-                          rating={Number(element.stars)}
-                          numberOfStars={5}
-                          name="rating"
-                          starDimension="13px"
-                          starSpacing="1.5px"
-                          starRatedColor="rgb(00, 00,00)"
-                          isSelectable="false"
-                          starHoverColor="null"
-                        />
-                        <p style={{ display: "inline-block", padding: "5px" }}>
-                          {element.user} - {element.date}
-                        </p>
-                        <p>{element.description}</p>
-                        <br />
+                      <div className="modal-review-item" key={index}>
+                        <div className="review-item-left">
+                          <div className="all-review-stars">
+                            <StarRatings
+                              rating={Number(element.stars)}
+                              numberOfStars={5}
+                              name="rating"
+                              starDimension="18px"
+                              starSpacing="1.5px"
+                              starRatedColor="rgb(00, 00,00)"
+                              isSelectable="false"
+                              starHoverColor="null"
+                            />
+                          </div>
+                          <div className="review-all-sliders">
+                            <div className="review-slider">
+                              <div className="slider-header">Size</div>
+                              <Slider value={sliderNumber()} />
+                              <div className="slider-ptag1">Runs Small</div>
+                              <div className="slider-ptag2">Runs Big</div>
+                            </div>
+
+                            <div className="review-slider">
+                              <div className="slider-header">Comfort</div>
+                              <Slider value={sliderNumber()} />
+                              <div className="slider-ptag1">Uncomfortable</div>
+                              <div className="slider-ptag2">
+                                Very Comfortable
+                              </div>
+                            </div>
+                            <div className="review-slider">
+                              <div className="slider-header">Durability</div>
+                              <Slider value={sliderNumber()} />
+                              <div className="slider-ptag1">Not Durable</div>
+                              <div className="slider-ptag2">Very Durable</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="review-item-right">
+                          <div className="review-title">{element.title}</div>
+
+                          <div
+                            id="username-date"
+                            style={{ display: "inline-block", padding: "5px" }}
+                          >
+                            {element.user} - {element.date}
+                          </div>
+
+                          <div id="item-description">{element.description}</div>
+                        </div>
                       </div>
                     ))}
                   </div>

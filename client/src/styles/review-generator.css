@@ -56,13 +56,9 @@
 }
 
 .modal-body {
-  max-width: 1440px;
-  margin: 0 auto;
-  margin-top: 0px;
+  width: 1131px;
   margin-right: auto;
-  margin-bottom: 0px;
   margin-left: auto;
-  padding: 0 24px;
 }
 
 .review-star {
@@ -92,9 +88,12 @@
   top: 29px;
 }
 
-.review-item {
+.modal-review-item {
   max-width: 100%;
   margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  position: relative;
 }
 
 .modal-header {
@@ -115,8 +114,6 @@
   display: inline-block;
 }
 
-.btn btn-link collapsed {
-}
 #write-review {
   padding-bottom: 4px;
   position: relative;
@@ -127,4 +124,70 @@
 #more-reviews {
   position: relative;
   right: 18px;
+}
+
+#username-date {
+  font-size: 13px;
+  color: grey;
+
+  position: relative;
+  top: 6rem;
+}
+
+#item-description {
+  position: relative;
+  flex-wrap: wrap;
+  width: 79%;
+  top: -25px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.review-title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 40px;
+}
+
+.star-items {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  top: -13px;
+}
+
+.all-review-stars {
+  position: relative;
+}
+
+.review-item-right {
+  padding-left: 20%;
+}
+
+#img-box {
+  width: 500px;
+  position: relative;
+  height: 100px;
+  display: flex;
+  right: 42rem;
+}
+
+.modal-image {
+  height: 60px;
+  width: 60px;
+}
+
+#shoe-name {
+  font: inherit;
+  width: 100%;
+}
+
+#price {
+  display: flex;
+  position: relative;
+  right: 18rem;
+  top: 40px;
+  width: 56px;
+  height: 25px;
 }

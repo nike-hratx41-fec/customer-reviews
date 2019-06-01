@@ -26,9 +26,9 @@
 }
 
 #slider-two {
-  position: absolute;
+  position: relative;
   width: 245px;
-  left: 751px;
+
   top: 22px;
 }
 
@@ -51,7 +51,7 @@
 #review-length {
   height: 135px;
   width: 205px;
-  left: 47rem;
+  left: 52rem;
   top: 5rem;
   position: absolute;
   font-size: 28px;
@@ -95,9 +95,10 @@
   color: grey;
 }
 .slider-ptag2 {
-  position: absolute;
-  right: 1px;
-  top: 39px;
+  left: 12rem;
+  position: relative;
+  right: -12px;
+  top: -16px;
   color: grey;
   font-size: 12px;
 }
