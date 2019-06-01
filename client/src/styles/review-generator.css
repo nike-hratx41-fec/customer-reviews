@@ -165,7 +165,7 @@
   padding-left: 20%;
 }
 
-#img-box {
+#img-box-review {
   width: 500px;
   position: relative;
   height: 100px;
@@ -173,17 +173,17 @@
   right: 42rem;
 }
 
-.modal-image {
+.modal-image-review {
   height: 60px;
   width: 60px;
 }
 
-#shoe-name {
+#shoe-name-review {
   font: inherit;
   width: 100%;
 }
 
-#price {
+#shoe-price-review {
   display: flex;
   position: relative;
   right: 18rem;
