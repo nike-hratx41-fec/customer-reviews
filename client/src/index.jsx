@@ -100,9 +100,10 @@ class CustomerReviews extends React.Component {
       });
     });
     window.addEventListener("productClickEvent", event => {
-      this.setState({ sku: event.detail.sku });
+      this.setState({ sku: event.detail.sku }, () => {
+        this.fetchShoe();
+      });
     });
-    this.fetchShoe();
   }
 
   // writeReview(string){
