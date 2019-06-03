@@ -89,6 +89,7 @@ class CustomerReviews extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchShoe();
     Axios.get(
       "http://ec2-3-16-213-178.us-east-2.compute.amazonaws.com/reviews"
     ).then(reviewData => {
