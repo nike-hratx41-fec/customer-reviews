@@ -18,11 +18,11 @@ const ModalTitle = props => {
   // console.log(props);
   return (
     <div id="modal-title-div">
-      <span id="img-box-review">
+      <div id="img-box-review">
         <img src={props.imgUrl} className="modal-image-review" />
         <p id="shoe-name-review">{props.shoeName}</p>
         <div id="shoe-price-review">$ {props.price}</div>
-      </span>
+      </div>
       <div>
         <h5
           className="modal-title"
@@ -42,43 +42,45 @@ const ModalTitle = props => {
             margin: " 0 5px"
           }}
         />
-      </div>
-      <div id="review-length">
-        <span id="modal-review-amount">{props.currReviews.length} Reviews</span>
-        <div id="modal-stars">
-          <StarRatings
-            rating={props.starAvg}
-            starRatedColor="blue"
-            numberOfStars={5}
-            name="rating"
-            starDimension="19px"
-            starSpacing="2px"
-            starRatedColor="rgb(00, 00,00)"
-            isSelectable="false"
-            starHoverColor="null"
-          />
-        </div>
-      </div>
-      <div id="all-sliders">
-        <div id="slider-one">
-          <div className="slider-header">Size</div>
-          <Slider value={80} />
-          <div className="slider-ptag1">Runs Small</div>
-          <div className="slider-ptag2">Runs Big</div>
-        </div>
 
-        <div id="slider-two">
-          <div className="slider-header">Comfort</div>
-          <Slider value={90} />
-          <div className="slider-ptag1">Uncomfortable</div>
-          <div className="slider-ptag2">Very Comfortable</div>
+        <div id="review-length">
+          <span id="modal-review-amount">
+            {props.currReviews.length} Reviews
+          </span>
+          <div id="modal-stars">
+            <StarRatings
+              rating={props.starAvg}
+              starRatedColor="blue"
+              numberOfStars={5}
+              name="rating"
+              starDimension="19px"
+              starSpacing="2px"
+              starRatedColor="rgb(00, 00,00)"
+              isSelectable="false"
+              starHoverColor="null"
+            />
+          </div>
         </div>
-        <div id="slider-three">
-          <div className="slider-header">Durability</div>
-          <Slider value={60} />
-          <div className="slider-ptag1">Not Durable</div>
-          <div className="slider-ptag2">Very Durable</div>
-        </div>
+      </div>
+      <div> </div>
+      <div id="slider-one">
+        <div className="slider-header">Size</div>
+        <Slider value={80} />
+        <div className="slider-ptag1">Runs Small</div>
+        <div className="slider-ptag2">Runs Big</div>
+      </div>
+
+      <div id="slider-two">
+        <div className="slider-header">Comfort</div>
+        <Slider value={90} />
+        <div className="slider-ptag1">Uncomfortable</div>
+        <div className="slider-ptag2">Very Comfortable</div>
+      </div>
+      <div id="slider-three">
+        <div className="slider-header">Durability</div>
+        <Slider value={60} />
+        <div className="slider-ptag1">Not Durable</div>
+        <div className="slider-ptag2">Very Durable</div>
       </div>
     </div>
   );

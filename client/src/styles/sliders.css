@@ -1,10 +1,11 @@
 #modal-title-div {
   font-family: "Nike TG", Oswald, "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  display: flex !important;
-
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 5rem;
   width: 100% !important;
   justify-content: center !important;
+  justify-items: center !important;
   height: 100% !important;
 }
 
@@ -19,41 +20,27 @@
 } */
 
 #slider-one {
-  width: 245px;
-  position: absolute;
-  top: 22px;
-  left: 27rem;
+  width: 60%;
 }
 
 #slider-two {
-  position: relative;
-  width: 245px;
-
-  top: 22px;
+  width: 60%;
 }
 
 #slider-three {
-  width: 245px;
-  position: absolute;
-  right: 23rem;
-  top: 22px;
+  width: 60%;
 }
 
-#all-sliders {
+/* #all-sliders {
   display: flex;
   width: 100%;
   height: 5%;
   justify-content: center;
   top: 15rem;
   position: absolute;
-}
+} */
 
 #review-length {
-  height: 135px;
-  width: 205px;
-  left: 52rem;
-  top: 5rem;
-  position: absolute;
   font-size: 28px;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
@@ -80,9 +67,7 @@
 .rc-slider-handle {
   width: 10px !important;
   height: 10px !important;
-
   top: 7px !important;
-
   border: solid 2px #212529 !important;
   background-color: #212529 !important;
 }

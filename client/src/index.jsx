@@ -62,35 +62,26 @@ class CustomerReviews extends React.Component {
     return activeReview;
   }
 
-  fetchReviews() {
-    Axios.get("http://ec2-3-16-213-178.us-east-2.compute.amazonaws.com/reviews")
-      .then(reviewData => {
-        let activeReview = this.findCurrReviews(reviewData.data);
-        console.log(reviewData.data);
+  fetchShoe() {
+    Axios.get(
+      `http://ec2-18-225-10-188.us-east-2.compute.amazonaws.com/api/images/${
+        this.state.sku
+      }`
+    ).then(results => {
+      this.setState({
+        imgUrl: results.data[0]
+      });
+    });
+
+    Axios.get(
+      `http://ec2-18-225-10-188.us-east-2.compute.amazonaws.com/api/title/${
+        this.state.sku
+      }`
+    )
+      .then(results => {
         this.setState({
-          currentReviews: activeReview,
-          totalStars: this.calculateAvgStars(activeReview)
-        });
-
-        Axios.get(
-          `http://ec2-18-225-10-188.us-east-2.compute.amazonaws.com/api/images/${
-            this.state.sku
-          }`
-        ).then(results => {
-          this.setState({
-            imgUrl: results.data[0]
-          });
-        });
-
-        Axios.get(
-          `http://ec2-18-225-10-188.us-east-2.compute.amazonaws.com/api/title/${
-            this.state.sku
-          }`
-        ).then(results => {
-          this.setState({
-            shoeName: results.data.productName,
-            price: results.data.price
-          });
+          shoeName: results.data.productName,
+          price: results.data.price
         });
       })
 
@@ -98,13 +89,20 @@ class CustomerReviews extends React.Component {
   }
 
   componentDidMount() {
-    console.log(document.getElementById);
-    this.fetchReviews();
-    window.addEventListener("productClickEvent", event => {
-      this.setState({ sku: event.detail.sku }, () => {
-        this.fetchReviews();
+    Axios.get(
+      "http://ec2-3-16-213-178.us-east-2.compute.amazonaws.com/reviews"
+    ).then(reviewData => {
+      let activeReview = this.findCurrReviews(reviewData.data);
+      console.log(reviewData.data);
+      this.setState({
+        currentReviews: activeReview,
+        totalStars: this.calculateAvgStars(activeReview)
       });
     });
+    window.addEventListener("productClickEvent", event => {
+      this.setState({ sku: event.detail.sku });
+    });
+    this.fetchShoe();
   }
 
   // writeReview(string){

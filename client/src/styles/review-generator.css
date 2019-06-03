@@ -59,6 +59,7 @@
   width: 1131px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 10rem;
 }
 
 .review-star {
@@ -165,33 +166,30 @@
   padding-left: 20%;
 }
 
-#img-box-review {
+/* #img-box-review {
   width: 500px;
   position: relative;
   height: 100px;
   display: flex;
 
   left: -39rem;
-}
+} */
 
 .modal-image-review {
   height: 60px;
   width: 60px;
-  left: 60px !important;
-  position: relative;
-  top: 24px;
 }
 
 #shoe-name-review {
   font: inherit;
   width: 100%;
+  position: relative;
+  top: -64px;
+  right: -67px;
 }
 
 #shoe-price-review {
-  display: flex;
   position: relative;
-  right: 18rem;
-  top: 40px;
-  width: 56px;
-  height: 25px;
+  left: 10rem;
+  top: -67px;
 }
