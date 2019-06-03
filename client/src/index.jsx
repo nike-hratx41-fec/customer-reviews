@@ -99,6 +99,7 @@ class CustomerReviews extends React.Component {
 
   componentDidMount() {
     console.log(document.getElementById);
+    this.fetchReviews();
     window.addEventListener("productClickEvent", event => {
       this.setState({ sku: event.detail.sku }, () => {
         this.fetchReviews();
