@@ -99,10 +99,13 @@ class CustomerReviews extends React.Component {
 
   componentDidMount() {
     console.log(document.getElementById);
-    window.addEventListener("productClickEvent", event => {
-      this.setState({ sku: event.detail.sku });
-    });
-    this.fetchReviews();
+    window
+      .addEventListener("productClickEvent", event => {
+        this.setState({ sku: event.detail.sku });
+      })
+      .then(() => {
+        this.fetchReviews();
+      });
   }
 
   // writeReview(string){

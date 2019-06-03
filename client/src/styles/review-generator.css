@@ -170,12 +170,16 @@
   position: relative;
   height: 100px;
   display: flex;
-  right: 42rem;
+
+  left: -39rem;
 }
 
 .modal-image-review {
   height: 60px;
   width: 60px;
+  left: 60px !important;
+  position: relative;
+  top: 24px;
 }
 
 #shoe-name-review {

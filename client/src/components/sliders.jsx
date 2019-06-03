@@ -18,11 +18,11 @@ const ModalTitle = props => {
   // console.log(props);
   return (
     <div id="modal-title-div">
-      <div id="img-box-review">
+      <span id="img-box-review">
         <img src={props.imgUrl} className="modal-image-review" />
         <p id="shoe-name-review">{props.shoeName}</p>
         <div id="shoe-price-review">$ {props.price}</div>
-      </div>
+      </span>
       <div>
         <h5
           className="modal-title"
