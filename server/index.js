@@ -1,27 +1,28 @@
-const express = require("express");
-const cors = require("cors");
-const bodyparser = require("body-parser");
-let app = express();
-let port = 3008;
+// const express = require("express");
+// const cors = require("cors");
+// const bodyparser = require("body-parser");
+// let app = express();
+// let port = 3008;
 
-const mongo = require("../database/index.js");
 
-app.use(cors());
+//const mongo = require("../database/index.js");
 
-app.use(bodyparser.json());
-app.use(express.static(__dirname + "/../client/dist"));
+// app.use(cors());
 
-app.get("/reviews", (req, res) => {
-  res.header("Access-Control-Allow-Origin");
-  mongo.findAll({}, (err, reviews) => {
-    if (err) {
-      console.log("error inside findall: ", err);
-    } else {
-      console.log("server side get complete");
-      res.send(reviews);
-    }
-  });
-});
+// app.use(bodyparser.json());
+// app.use(express.static(__dirname + "/../client/dist"));
+
+// app.get("/reviews", (req, res) => {
+//   res.header("Access-Control-Allow-Origin");
+//   mongo.findAll({}, (err, reviews) => {
+//     if (err) {
+//       console.log("error inside findall: ", err);
+//     } else {
+//       console.log("server side get complete");
+//       res.send(reviews);
+//     }
+//   });
+// });
 
 // app.get(
 //   "graph.facebook.com / 17873440459141021 / top_media ? user_id = 17841405309211844 & fields=id, media_type, comments_count, like_count",
@@ -35,6 +36,25 @@ app.get("/reviews", (req, res) => {
 //   }
 // );
 
-app.listen(port, function() {
-  console.log(`listening on port ${port}`);
+// app.listen(port, function() {
+//   console.log(`listening on port ${port}`);
+// });
+
+
+var express = require('express'),
+    fs = require('fs'),
+    app = express();
+ 
+var app = express();
+ 
+var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+ 
+ 
+app.get('/', function(req, res) {
+    res.send('Hello from NodeJS  at '+ new Date());
 });
+ 
+ 
+app.listen(8080, ip);
+ 
+module.exports = app;
